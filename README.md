@@ -1,6 +1,6 @@
 Доступные страницы:
 
-/login
+/login \
 /login/
 /login/restore_by_email
 /login/reset_password
