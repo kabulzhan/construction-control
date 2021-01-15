@@ -1,3 +1,17 @@
+Доступные страницы:
+
+/login
+/login/
+/login/restore_by_email
+/login/reset_password
+
+/main
+/main/add_user
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
