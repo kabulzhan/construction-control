@@ -1,12 +1,12 @@
 Доступные страницы:
 
 /login \
-/login/
-/login/restore_by_email
-/login/reset_password
+/login/ \
+/login/restore_by_email \
+/login/reset_password \
 
-/main
-/main/add_user
+/main \
+/main/add_user \
 
 
 
