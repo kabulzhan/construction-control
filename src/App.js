@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect } from "react-router-dom";
+import LoginRoutes from "./pages/login/login-routes";
+import MainRoutes from "./pages/main/main-routes";
+import { createUseStyles } from "react-jss";
+
+const useStyles = createUseStyles({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100vh",
+    width: "768px",
+    margin: "auto",
+    backgroundColor: "white",
+  },
+  "@media (max-width: 768px)": {
+    container: {
+      width: "95vw",
+    },
+  },
+});
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.container}>
+      <Switch>
+        <Route exact path="/" render={() => <Redirect to="/login" />} />
+        <Route path="/login" component={LoginRoutes} />
+        <Route path="/main" component={MainRoutes} />
+        <Route path="/" render={() => <Redirect to="/" />} />
+      </Switch>
     </div>
   );
 }
