@@ -1,33 +1,13 @@
 import React, { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import Compress from "compress.js";
-
-const baseStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  padding: "5px",
-  borderWidth: 2,
-  borderColor: "#c4c4c4",
-  borderStyle: "solid",
-  backgroundColor: "#c4c4c4",
-  color: "#bdbdbd",
-  outline: "none",
-  transition: "border .24s ease-in-out",
-};
-
-const activeStyle = {
-  borderColor: "#2196f3",
-};
-
-const acceptStyle = {
-  borderColor: "#00e676",
-};
-
-const rejectStyle = {
-  borderColor: "#ff1744",
-};
+import {
+  baseStyle,
+  acceptStyle,
+  activeStyle,
+  rejectStyle,
+  plusStyle,
+} from "../css/image-upload.styles";
 
 function ImageUpload(props) {
   const {
@@ -74,22 +54,12 @@ function ImageUpload(props) {
     <>
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <span style={{ color: "black", fontSize: "70px", fontWeight: 100 }}>
-          +
-        </span>
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: "auto",
-            color: `${
-              props.imageToUpload ? "green" : props.error ? "red" : "black"
-            } `,
-          }}
-        >
+        <span style={plusStyle}>+</span>
+        <div>
           {props.imageToUpload
             ? "Картинка загружена"
             : "Кликните или перетащите сюда картинку"}
-        </p>
+        </div>
       </div>
     </>
   );

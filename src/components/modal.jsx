@@ -1,38 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useHistory } from "react-router-dom";
-import { createUseStyles } from "react-jss";
-
-const useStyles = createUseStyles({
-  modal: {
-    height: "100%",
-    width: "100%",
-    position: "fixed",
-    backgroundColor: "#302D42",
-    left: 0,
-    top: 0,
-    zIndex: 6,
-    display: "flex",
-  },
-  modalBody: {
-    backgroundColor: "white",
-    margin: "auto",
-    padding: "0 10px",
-  },
-  close: {
-    width: "100%",
-    textAlign: "right",
-    fontSize: "16px",
-    lineHeight: "35px",
-    height: "35px",
-  },
-  closeBtn: {
-    paddingRight: "10px",
-    paddingTop: "10px",
-    marginTop: "10px",
-    cursor: "pointer",
-  },
-});
+import useStyles from "../css/modal.styles";
 
 const Modal = (props) => {
   const classes = useStyles();

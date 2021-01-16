@@ -1,54 +1,11 @@
 import React, { useState } from "react";
-import { createUseStyles } from "react-jss";
 import { useDispatch } from "react-redux";
-import FormInput from "../form-input/form-input.component";
+import FormInput from "../form-input/form-input";
 import CustomButton from "../buttons/custom-button";
 import { Link, useHistory } from "react-router-dom";
 import ImageUpload from "../image-upload";
 import { addUser } from "../../redux/user/user.actions";
-
-const useStyles = createUseStyles({
-  container: {
-    padding: "0 40px 27px",
-  },
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "0 10px 34px ",
-  },
-  title: {
-    fontSize: "20px",
-  },
-  subtitle: {
-    fontSize: "12px",
-    padding: "23px 5px 11px",
-  },
-  block: {
-    textAlign: "center",
-    display: "flex",
-    alignItems: "center",
-  },
-  label: {
-    fontSize: "12px",
-    paddingLeft: "5px",
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "21px",
-  },
-  buttons: {
-    padding: "50px 100px 25px",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    fontSize: "12px",
-  },
-  delete: {
-    fontSize: "12px",
-    color: "#FF6262 !important",
-  },
-});
+import useStyles from "../../css/add-user.styles";
 
 const AddUser = (props) => {
   const classes = useStyles();
@@ -61,6 +18,8 @@ const AddUser = (props) => {
     tel: "",
     email: "",
     blocked: false,
+    password: "",
+    confirmPassword: "",
   });
   const handleChange = (e) => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
@@ -93,7 +52,6 @@ const AddUser = (props) => {
         <FormInput
           label="Фамилия"
           name="lastname"
-          className={classes.input}
           width="290px"
           value={userCredentials.lastname}
           onChange={handleChange}
@@ -102,16 +60,12 @@ const AddUser = (props) => {
         <FormInput
           label="Имя"
           name="firstname"
-          className={classes.input}
-          width="290px"
           value={userCredentials.firstname}
           onChange={handleChange}
           autoComplete="off"
         />
         <FormInput
           label="Электронная почта"
-          className={classes.input}
-          width="290px"
           type="email"
           name="email"
           value={userCredentials.email}
@@ -121,9 +75,23 @@ const AddUser = (props) => {
         <FormInput
           label="Телефон"
           name="tel"
-          className={classes.input}
-          width="290px"
           value={userCredentials.tel}
+          onChange={handleChange}
+          autoComplete="off"
+        />
+        <FormInput
+          label="Пароль"
+          type="password"
+          name="password"
+          value={userCredentials.password}
+          onChange={handleChange}
+          autoComplete="off"
+        />
+        <FormInput
+          label="Подтверждение пароля"
+          type="password"
+          name="confirmPassword"
+          value={userCredentials.confirmPassword}
           onChange={handleChange}
           autoComplete="off"
         />
@@ -137,9 +105,7 @@ const AddUser = (props) => {
       />
 
       <div className={classes.buttons}>
-        <CustomButton bgColor="#1AA839" br="55px" onClick={handleSubmit}>
-          Сохранить
-        </CustomButton>
+        <CustomButton handleClick={handleSubmit}>Сохранить</CustomButton>
         <Link to={`${props.path ? props.path : "#"}`}>Отмена</Link>
       </div>
       <div>

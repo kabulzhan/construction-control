@@ -1,30 +1,8 @@
 import React from "react";
-import { createUseStyles } from "react-jss";
-
-const usestyles = createUseStyles({
-  userRow: {
-    display: "grid",
-    gridTemplateColumns: "50px 2fr 1fr 1fr",
-    gridTemplateRows: "50px",
-    gap: "1rem",
-    margin: "5px 0",
-    alignItems: "center",
-  },
-  userImage: {
-    overflow: "hidden",
-    color: "green",
-    borderRadius: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    "& img": {
-      width: "70px",
-    },
-  },
-});
+import { useUserRowstyles } from "../../css/manage-users.styles";
 
 const UserRow = ({ user }) => {
-  const classes = usestyles(user);
+  const classes = useUserRowstyles(user);
   console.log(user.img);
   return (
     <div className={classes.userRow}>

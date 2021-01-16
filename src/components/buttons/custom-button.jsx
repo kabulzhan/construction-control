@@ -1,19 +1,13 @@
 import React from "react";
-import styled from "styled-components";
+import { useButtonStyles } from "../../css/custom-button.styles";
 
-const StyledButton = styled.button`
-  width: ${(props) => (props.width ? props.width : "165px")};
-  height: ${(props) => (props.height ? props.height : "28px")};
-  background-color: ${(props) => (props.bgColor ? props.bgColor : "grey")};
-  margin-top: ${(props) => (props.mTop ? props.mTop : 0)};
-  border-radius: ${(props) => (props.br ? props.br : 0)};
-  color: white;
-  border: none;
-  cursor: pointer;
-`;
-
-const CustomButton = ({ children, ...otherProps }) => {
-  return <StyledButton {...otherProps}>{children}</StyledButton>;
+const CustomButton = ({ children, handleClick, ...otherProps }) => {
+  const classes = useButtonStyles(otherProps);
+  return (
+    <button className={classes.button} onClick={handleClick}>
+      {children}
+    </button>
+  );
 };
 
 export default CustomButton;
