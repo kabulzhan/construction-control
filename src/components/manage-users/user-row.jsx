@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useUserRowstyles } from "../../css/manage-users.styles";
 
 const UserRow = ({ user }) => {
@@ -9,7 +10,7 @@ const UserRow = ({ user }) => {
       <div className={classes.userImage}>
         <img src={user.img} />
       </div>
-      <div>{`${user.firstname} ${user.lastname}`}</div>
+      <Link to="/main/users/kabulzhan">{`${user.firstname} ${user.lastname}`}</Link>
       <div>{`${user.email}`}</div>
       <div>{`${user.tel}`}</div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import FormInput from "../form-input/form-input";
 import CustomButton from "../buttons/custom-button";
@@ -21,14 +21,59 @@ const AddUser = (props) => {
     password: "",
     confirmPassword: "",
   });
+
   const handleChange = (e) => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = () => {
     console.log("submit handled");
     dispatch(addUser({ ...userCredentials, img: photo }));
-    history.push("/main");
+    history.push("/main/users");
   };
+
+  const [passwordLengthMsg, setPasswordLengthMsg] = useState({
+    message: "",
+    error: false,
+  });
+
+  const [passwordMatchMsg, setPasswordMatchMsg] = useState({
+    message: "",
+    error: false,
+  });
+
+  useEffect(() => {
+    if (!userCredentials.password || userCredentials.password.length >= 6) {
+      if (passwordLengthMsg.message) {
+        setPasswordLengthMsg({ message: "", error: false });
+      }
+    } else if (userCredentials.password.length < 6) {
+      if (!passwordLengthMsg.error) {
+        setPasswordLengthMsg({
+          message: "Длина пароля должна быть не менее 6 симоволов",
+          error: true,
+        });
+      }
+    }
+  }, [userCredentials.password]);
+
+  useEffect(() => {
+    if (!userCredentials.confirmPassword) return;
+    if (userCredentials.confirmPassword !== userCredentials.password) {
+      setPasswordMatchMsg({
+        message: "Пароль и подтверждение не совпадают",
+        error: true,
+      });
+    } else {
+      if (passwordMatchMsg.message) {
+        setPasswordMatchMsg({
+          message: "",
+          error: false,
+        });
+      }
+    }
+  }, [userCredentials.confirmPassword]);
+
   return (
     <div className={classes.container}>
       <div className={classes.header}>
@@ -95,6 +140,10 @@ const AddUser = (props) => {
           onChange={handleChange}
           autoComplete="off"
         />
+      </div>
+      <div className={classes.grid}>
+        <div className={classes.note}>{passwordLengthMsg.message}</div>
+        <div className={classes.note}>{passwordMatchMsg.message}</div>
       </div>
       <div className={classes.subtitle}>Добавить фото</div>
       <ImageUpload

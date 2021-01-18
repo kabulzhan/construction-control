@@ -12,6 +12,7 @@ const useStyles = createUseStyles({
     display: "flex",
   },
   modalBody: {
+    maxWidth: "80%",
     backgroundColor: "white",
     border: "25px solid #e5e5e5",
     margin: "auto",

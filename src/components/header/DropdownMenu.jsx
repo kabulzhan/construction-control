@@ -1,44 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { createUseStyles } from "react-jss";
+import { useMenuStyles } from "../../css/header.styles";
 
-const useStyles = createUseStyles({
-  dropdownMenu: {
-    position: "absolute",
-    top: "66px",
-    width: "768px",
-    zIndex: 5,
-    backgroundColor: "#F8F8F8",
-    display: "flex",
-    flexDirection: "column",
-  },
-  loginMenu: {
-    textAlign: "right",
-    paddingRight: "10px",
-    display: "flex",
-    flexDirection: "column",
-  },
-  menuItem: {
-    paddingLeft: "10px",
-    height: "52px",
-    lineHeight: "52px",
-    textDecoration: "none",
-    color: "black !important",
-  },
-});
-
-const DropdownMenu = ({ outsideClickDetector, login }) => {
-  const classes = useStyles();
+const DropdownMenu = ({ outsideClickDetector, login, handleClick }) => {
+  const classes = useMenuStyles();
   // const user = useSelector((state) => state.user);
   const wrapperRef = React.useRef(null);
   outsideClickDetector(wrapperRef);
+
+  const handleOnClick = () => {
+    handleClick(false);
+  };
+
   return (
     <>
       {login ? (
         <div className={classes.dropdownMenu} ref={wrapperRef}>
           <div className={classes.loginMenu}>
-            <Link className={classes.menuItem} to="login/reset_password">
+            <Link className={classes.menuItem} to="/login/reset_password">
               Сменить пароль
             </Link>
             <Link className={classes.menuItem}> Выход</Link>
@@ -47,12 +27,19 @@ const DropdownMenu = ({ outsideClickDetector, login }) => {
       ) : (
         <div className={classes.dropdownMenu} ref={wrapperRef}>
           <Link
-            onClick={() => console.log("hello world")}
+            onClick={handleOnClick}
             className={classes.menuItem}
+            to="/main/users"
           >
             Пользователи (виден только у администратора)
           </Link>
-          <Link className={classes.menuItem}>Объекты</Link>
+          <Link
+            onClick={handleOnClick}
+            className={classes.menuItem}
+            to="/main/sites"
+          >
+            Объекты
+          </Link>
         </div>
       )}
     </>

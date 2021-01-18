@@ -42,6 +42,11 @@ const useStyles = createUseStyles({
     fontSize: "12px",
     color: "#FF6262 !important",
   },
+  note: {
+    height: "10px",
+    fontSize: "10px",
+    color: "#FF6262",
+  },
 });
 
 export default useStyles;

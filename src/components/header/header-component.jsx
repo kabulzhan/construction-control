@@ -2,43 +2,10 @@ import React from "react";
 import { ReactComponent as Ham } from "../../assets/ham.svg";
 import { ReactComponent as Triangle } from "../../assets/triangle.svg";
 import DropdownMenu from "./DropdownMenu";
-import { createUseStyles } from "react-jss";
-
-const useStyles = createUseStyles({
-  header: {
-    height: "66px",
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    background: "#ebebeb",
-  },
-  leftMenu: {
-    padding: "0 23px",
-    cursor: "pointer",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-  },
-  triangle: {
-    padding: "2px 10px 0 16px",
-    height: "12px",
-  },
-  username: {
-    fontSize: "20px",
-  },
-  logout: {
-    paddingRight: "28px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    cursor: "pointer",
-    height: "100%",
-  },
-});
+import { useHeaderStyles } from "../../css/header.styles";
 
 const Header = () => {
-  const classes = useStyles();
+  const classes = useHeaderStyles();
   const [menu, setMenu] = React.useState(false);
 
   const handleClick = (e) => {
@@ -96,6 +63,7 @@ const Header = () => {
         <DropdownMenu
           outsideClickDetector={OutsideClickDetector}
           login={menu === "loginMenu"}
+          handleClick={setMenu}
         />
       )}
     </div>

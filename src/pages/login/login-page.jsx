@@ -34,7 +34,7 @@ const Login = () => {
           loginStyle
         />
       </div>
-      <Link className={classes.link} to="login/restore_by_email">
+      <Link className={classes.link} to="/login/restore_by_email">
         Забыли пароль?
       </Link>
       <CustomButton loginButton>Войти</CustomButton>
