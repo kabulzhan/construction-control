@@ -1,24 +1,21 @@
 {
   "files": {
-    "main.css": "/construction-control/static/css/main.6ecd907e.chunk.css",
-    "main.js": "/construction-control/static/js/main.4c6090c2.chunk.js",
-    "main.js.map": "/construction-control/static/js/main.4c6090c2.chunk.js.map",
-    "runtime-main.js": "/construction-control/static/js/runtime-main.5a0104bf.js",
-    "runtime-main.js.map": "/construction-control/static/js/runtime-main.5a0104bf.js.map",
-    "static/js/2.c5546e74.chunk.js": "/construction-control/static/js/2.c5546e74.chunk.js",
-    "static/js/2.c5546e74.chunk.js.map": "/construction-control/static/js/2.c5546e74.chunk.js.map",
-    "static/js/3.480268dd.chunk.js": "/construction-control/static/js/3.480268dd.chunk.js",
-    "static/js/3.480268dd.chunk.js.map": "/construction-control/static/js/3.480268dd.chunk.js.map",
+    "main.js": "/construction-control/static/js/main.4826cc9b.chunk.js",
+    "main.js.map": "/construction-control/static/js/main.4826cc9b.chunk.js.map",
+    "runtime-main.js": "/construction-control/static/js/runtime-main.02c99e08.js",
+    "runtime-main.js.map": "/construction-control/static/js/runtime-main.02c99e08.js.map",
+    "static/js/2.6822490a.chunk.js": "/construction-control/static/js/2.6822490a.chunk.js",
+    "static/js/2.6822490a.chunk.js.map": "/construction-control/static/js/2.6822490a.chunk.js.map",
+    "static/js/3.0e1d3bd9.chunk.js": "/construction-control/static/js/3.0e1d3bd9.chunk.js",
+    "static/js/3.0e1d3bd9.chunk.js.map": "/construction-control/static/js/3.0e1d3bd9.chunk.js.map",
     "index.html": "/construction-control/index.html",
-    "static/css/main.6ecd907e.chunk.css.map": "/construction-control/static/css/main.6ecd907e.chunk.css.map",
-    "static/js/2.c5546e74.chunk.js.LICENSE.txt": "/construction-control/static/js/2.c5546e74.chunk.js.LICENSE.txt",
+    "static/js/2.6822490a.chunk.js.LICENSE.txt": "/construction-control/static/js/2.6822490a.chunk.js.LICENSE.txt",
     "static/media/ham.6909ae81.svg": "/construction-control/static/media/ham.6909ae81.svg",
     "static/media/triangle.df667251.svg": "/construction-control/static/media/triangle.df667251.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.5a0104bf.js",
-    "static/js/2.c5546e74.chunk.js",
-    "static/css/main.6ecd907e.chunk.css",
-    "static/js/main.4c6090c2.chunk.js"
+    "static/js/runtime-main.02c99e08.js",
+    "static/js/2.6822490a.chunk.js",
+    "static/js/main.4826cc9b.chunk.js"
   ]
 }
