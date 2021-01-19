@@ -10,6 +10,7 @@ const useStyles = createUseStyles({
     top: 0,
     zIndex: 6,
     display: "flex",
+    overflow: "auto",
   },
   modalBody: {
     maxWidth: "80%",

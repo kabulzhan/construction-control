@@ -20,6 +20,12 @@ export const useButtonStyles = createUseStyles({
         borderRadius: 0,
       };
     }
+    if (props.submit) {
+      return {
+        ...genericStyles,
+        backgroundColor: "#1AA839",
+      };
+    }
     return genericStyles;
   },
 });

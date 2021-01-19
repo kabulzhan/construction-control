@@ -6,6 +6,7 @@ import Users from "./Users";
 import Sites from "./Sites";
 import AddUser from "../../components/manage-users/add-user";
 import UserInfo from "../../components/manage-users/user-info";
+import AddSite from "../../components/manage-sites/add-site";
 
 const MainRoutes = ({ match: { path } }) => {
   return (
@@ -24,6 +25,11 @@ const MainRoutes = ({ match: { path } }) => {
       />
 
       <Route exact path={`${path}/sites`} component={Sites} />
+      <Route
+        exact
+        path={`${path}/sites/add_site`}
+        render={() => <Modal child={AddSite} path="/main/sites/" />}
+      />
     </>
   );
 };

@@ -31,9 +31,6 @@ const useStyles = createUseStyles({
     display: "grid",
     gap: "0 2%",
     gridTemplateColumns: "20% 10% 10% 17.5% 17.5% 15%",
-    "& span": {
-      border: "2px solid black",
-    },
   },
 });
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import FormInput from "../form-input/form-input";
+import FormInput from "../input-forms";
 import CustomButton from "../buttons/custom-button";
 import { Link, useHistory } from "react-router-dom";
 import ImageUpload from "../image-upload";

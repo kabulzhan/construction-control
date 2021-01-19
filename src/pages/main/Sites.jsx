@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import useStyles from "../../css/Sites.styles";
 import CustomButton from "../../components/buttons/custom-button";
 
@@ -10,7 +11,9 @@ const Sites = () => {
     <div className={classes.container}>
       <div className={classes.header}>
         <h2>Объекты</h2>
-        <CustomButton>Добавить объект</CustomButton>
+        <Link to="/main/sites/add_site">
+          <CustomButton>Добавить объект</CustomButton>
+        </Link>
       </div>
       <div className={classes.menu}>
         <span

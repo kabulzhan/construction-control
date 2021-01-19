@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/buttons/custom-button";
-import FormInput from "../../components/form-input/form-input";
+import FormInput from "../../components/input-forms";
 import { useLoginPageStyles } from "../../css/login.styles";
 
 const Recover = () => {

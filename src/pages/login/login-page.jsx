@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import CustomButton from "../../components/buttons/custom-button";
 import { useLoginPageStyles } from "../../css/login.styles";
-import FormInput from "../../components/form-input/form-input";
+import FormInput from "../../components/input-forms";
 
 const Login = () => {
   const classes = useLoginPageStyles();
@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push("/main");
+    history.push("/main/sites");
   };
 
   return (
