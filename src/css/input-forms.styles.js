@@ -38,7 +38,7 @@ export const usetextAreaStyles = createUseStyles({
 });
 
 export const useSelectStyles = createUseStyles({
-  label: {
+  select: {
     fontSize: "12px",
     width: "100%",
     "& select": {
@@ -48,5 +48,8 @@ export const useSelectStyles = createUseStyles({
       fontFamily: "Roboto",
       height: "33px",
     },
+  },
+  label: {
+    paddingLeft: "5px",
   },
 });

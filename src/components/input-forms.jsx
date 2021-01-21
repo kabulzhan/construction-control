@@ -43,13 +43,16 @@ export const SelectForm = ({
 }) => {
   const classes = useSelectStyles();
   const labels = Object.keys(options);
-  console.log(labels);
   return (
-    <div className={classes.label}>
-      {label}
+    <div className={classes.select}>
+      <div className={classes.label}>{label}</div>
       <select onChange={handleChange} {...otherProps}>
         {labels.map((label) => (
-          <option value={label} selected={defaultOption === label}>
+          <option
+            value={label}
+            // defaultValue={defaultOption === label}
+            key={label}
+          >
             {options[label]}
           </option>
         ))}

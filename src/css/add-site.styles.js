@@ -21,13 +21,6 @@ const useStyles = createUseStyles({
     gap: "0 5%",
     margin: "3% 0",
   },
-  contact: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "5% 5%",
-    boxSizing: "border-box",
-    marginBottom: "2%",
-  },
   add: {
     textAlign: "right",
     margin: "2% 0 4%",

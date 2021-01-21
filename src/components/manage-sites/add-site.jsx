@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useStyles from "../../css/add-site.styles";
 import { FormInput, TextArea, SelectForm } from "../input-forms";
 import CustomButton from "../buttons/custom-button";
 import Team from "./team";
+import Contacts from "./contacts";
 
 const AddSite = (props) => {
   const classes = useStyles();
+
   return (
-    <div className={classes.container}>
+    <div id="container" className={classes.container}>
       <div className={classes.main}>
         <h2 className={classes.title}>Добавить объект</h2>
         <FormInput label="Название" />
@@ -20,16 +22,7 @@ const AddSite = (props) => {
             label="Статус"
           />
         </div>
-        <h5>Контакты</h5>
-        <div className={classes.contact}>
-          <FormInput label="Имя" />
-          <FormInput label="Телефон" />
-          <FormInput label="Электронная почта" />
-          <FormInput label="Другие способы связи" />
-        </div>
-        <div className={classes.add}>
-          <CustomButton>добавить контакт</CustomButton>
-        </div>
+        <Contacts />
         <div className={classes.section}>
           <TextArea label="Правила попадания на объект" height="15vh" />
           <TextArea label="Общее описание" height="15vh" />

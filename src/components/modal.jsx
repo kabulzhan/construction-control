@@ -12,7 +12,7 @@ const Modal = (props) => {
   };
   const ChildComponent = props.child;
   return ReactDOM.createPortal(
-    <div className={classes.modal} onClick={handleClose}>
+    <div className={classes.modal}>
       <div className={classes.modalBody} onClick={(e) => e.stopPropagation()}>
         <div className={classes.close}>
           <span className={classes.closeBtn} onClick={handleClose}>

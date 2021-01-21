@@ -44,7 +44,11 @@ const ResetPasswordByEmail = ({ byemail }) => {
         error: false,
       });
     }
-  }, [newCredentials.newPassword]);
+  }, [
+    newCredentials.newPassword,
+    passwordLengthMsg.error,
+    passwordLengthMsg.message,
+  ]);
 
   useEffect(() => {
     if (!newCredentials.confirmPassword) return;
@@ -61,7 +65,11 @@ const ResetPasswordByEmail = ({ byemail }) => {
         });
       }
     }
-  }, [newCredentials.confirmPassword]);
+  }, [
+    newCredentials.confirmPassword,
+    newCredentials.newPassword,
+    passwordMatchMsg.message,
+  ]);
 
   const handleChange = (e) => {
     setNewCredentials({ ...newCredentials, [e.target.name]: e.target.value });

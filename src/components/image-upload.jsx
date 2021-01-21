@@ -20,23 +20,24 @@ function ImageUpload(props) {
     accept: "image/*",
     onDrop: (acceptedFiles) => {
       acceptedFiles.splice(1);
-      const compress = new Compress();
-      compress
-        .compress(acceptedFiles, {
-          quality: 1,
-          maxHeight: props.maxHeight,
-          maxWidth: props.maxWidth,
+      if (props.maxHeight || props.maxHeight) {
+        const compress = new Compress();
+        return compress
+          .compress(acceptedFiles, {
+            quality: 1,
+            maxHeight: props.maxHeight,
+            maxWidth: props.maxWidth,
+          })
+          .then((data) => {
+            props.setImageToUpload(`${data[0].prefix} ${data[0].data}`);
+          })
+          .catch((error) => console.log(error));
+      }
+      props.setImageToUpload(
+        Object.assign(acceptedFiles[0], {
+          preview: URL.createObjectURL(acceptedFiles[0]),
         })
-        .then((data) => {
-          props.setImageToUpload(`${data[0].prefix} ${data[0].data}`);
-        })
-        .catch((error) => console.log(error));
-
-      // setImageToUpload(
-      //   Object.assign(acceptedFiles[0], {
-      //     preview: URL.createObjectURL(acceptedFiles[0]),
-      //   })
-      // )
+      );
     },
   });
 

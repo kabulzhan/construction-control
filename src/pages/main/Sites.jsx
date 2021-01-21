@@ -17,13 +17,13 @@ const Sites = () => {
       </div>
       <div className={classes.menu}>
         <span
-          className={!completed && classes.completed}
+          className={!completed ? classes.completed : undefined}
           onClick={() => selectCompleted(false)}
         >
           Актуальные
         </span>
         <span
-          className={completed && classes.completed}
+          className={completed ? classes.completed : undefined}
           onClick={() => selectCompleted(true)}
         >
           Завершенные

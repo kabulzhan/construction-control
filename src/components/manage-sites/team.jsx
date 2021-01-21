@@ -1,6 +1,6 @@
 import React from "react";
 import CustomButton from "../buttons/custom-button";
-import { useTeamStyles } from "../../css/team.styles";
+import { useTeamStyles } from "../../css/manage-sites.styles";
 
 const Team = ({ edit }) => {
   const classes = useTeamStyles();

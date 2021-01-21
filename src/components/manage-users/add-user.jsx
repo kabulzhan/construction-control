@@ -55,7 +55,11 @@ const AddUser = (props) => {
         });
       }
     }
-  }, [userCredentials.password]);
+  }, [
+    userCredentials.password,
+    passwordLengthMsg.error,
+    passwordLengthMsg.message,
+  ]);
 
   useEffect(() => {
     if (!userCredentials.confirmPassword) return;
@@ -72,7 +76,11 @@ const AddUser = (props) => {
         });
       }
     }
-  }, [userCredentials.confirmPassword]);
+  }, [
+    userCredentials.confirmPassword,
+    passwordMatchMsg.message,
+    userCredentials.password,
+  ]);
 
   return (
     <div className={classes.container}>
