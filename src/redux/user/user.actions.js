@@ -47,9 +47,9 @@ export const getUsersFailure = (error) => ({
   payload: error,
 });
 
-export const addUserStart = (token, newUser, callback) => ({
+export const addUserStart = (newUser, callback) => ({
   type: UserActionTypes.ADD_USER_START,
-  payload: { token, newUser },
+  payload: newUser,
   callback,
 });
 
@@ -60,6 +60,12 @@ export const addUserSuccess = () => ({
 export const addUserFailure = (error) => ({
   type: UserActionTypes.ADD_USER_FAILURE,
   payload: error,
+});
+
+export const editUserStart = (userToEdit, callback) => ({
+  type: UserActionTypes.EDIT_USER_START,
+  payload: userToEdit,
+  callback,
 });
 
 export const clearErrors = () => ({

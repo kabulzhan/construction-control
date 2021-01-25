@@ -12,11 +12,8 @@ import {
 } from "./user.actions";
 
 export function* getUsers({ payload }) {
-  const config = {
-    headers: { Authorization: payload.token },
-  };
   try {
-    const response = yield axios.get(`/api/users/${payload.id}`, config);
+    const response = yield axios.get(`/api/users/${payload.id}`);
     yield put(getUsersSuccess(response.data));
   } catch (e) {
     yield put(
@@ -45,11 +42,8 @@ export function* onSignInStart() {
 }
 
 export function* addUser({ payload, callback }) {
-  const config = {
-    headers: { Authorization: payload.token },
-  };
   try {
-    yield axios.post("/api/users/add", payload.newUser, config);
+    yield axios.post("/api/users/add", payload);
     yield put(addUserSuccess());
     yield callback();
   } catch (e) {
@@ -62,6 +56,19 @@ export function* onAddUserStart() {
   yield takeLatest(UserActionTypes.ADD_USER_START, addUser);
 }
 
+export function* editUser({ payload, callback }) {
+  yield console.log("HELLO EDIT USER");
+}
+
+export function* onEditUserStart() {
+  yield takeLatest(UserActionTypes.EDIT_USER_START, editUser);
+}
+
 export function* userSagas(args) {
-  yield all([call(onSignInStart), call(onGetUsersStart), call(onAddUserStart)]);
+  yield all([
+    call(onSignInStart),
+    call(onGetUsersStart),
+    call(onAddUserStart),
+    call(onEditUserStart),
+  ]);
 }

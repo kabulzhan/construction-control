@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FormInput from "../input-forms";
 import CustomButton from "../buttons/custom-button";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ImageUpload from "../image-upload";
 import { addUserStart, clearErrors } from "../../redux/user/user.actions";
 import useStyles from "../../css/add-user.styles";
@@ -27,18 +27,19 @@ const AddUser = ({ history, path, userToEdit }) => {
   });
   useEffect(() => {
     if (userToEdit) {
-      const { lastname, firstname, tel, email, blocked } = userToEdit;
+      console.log("HELLO SANTA CLAUS");
+      const { lastname, firstname, tel, email, blocked, id } = userToEdit;
       setUserCredentials({
-        lastname: `${lastname || ""}`,
-        firstname: `${firstname || ""}`,
+        lastname,
+        firstname,
+        email,
+        id,
         tel: `${tel || ""}`,
-        email: `${email || ""}`,
-        blocked: `${blocked || ""}`,
+        blocked: blocked || false,
         password: "",
       });
     }
   }, [userToEdit]);
-  // const { user_id } = useParams();
 
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -52,15 +53,12 @@ const AddUser = ({ history, path, userToEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (confirmPassword !== userCredentials.password) return;
+    const callback = () => history.push(path);
+    if (userToEdit) {
+      return;
+    }
     dispatch(
-      addUserStart(
-        admin.token,
-        {
-          ...userCredentials,
-          org_id: admin.organization,
-        },
-        () => history.push("/main/users")
-      )
+      addUserStart({ ...userCredentials, org_id: admin.organization }, callback)
     );
   };
 
@@ -204,7 +202,7 @@ const AddUser = ({ history, path, userToEdit }) => {
       </div>
       {userToEdit && (
         <Link to={`${path ? path : "#"}`} className={classes.delete}>
-          Удалить
+          Удалить пользователя
         </Link>
       )}
     </form>
