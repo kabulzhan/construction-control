@@ -32,7 +32,7 @@ const useStyles = createUseStyles({
     gap: "21px",
   },
   buttons: {
-    padding: "30px 100px 15px",
+    margin: "2% 15% 1.5%",
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
@@ -46,6 +46,11 @@ const useStyles = createUseStyles({
     height: "10px",
     fontSize: "10px",
     color: "#FF6262",
+  },
+  error: {
+    marginTop: "1.5%",
+    color: "red",
+    height: "19px",
   },
 });
 

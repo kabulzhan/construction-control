@@ -9,7 +9,7 @@ export const useFormInputStyles = createUseStyles({
       border: "1px solid #a9a9a9",
       boxSizing: "border-box",
     };
-    if (props.loginStyle) return { ...genericStyles, height: "44px" };
+    if (props.loginstyle) return { ...genericStyles, height: "44px" };
     return genericStyles;
   },
   label: (props) => ({

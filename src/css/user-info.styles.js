@@ -21,6 +21,7 @@ const useStyles = createUseStyles({
     width: "25%",
   },
   editButton: {
+    display: "block",
     margin: "5%",
     textAlign: "center",
   },

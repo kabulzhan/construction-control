@@ -2,7 +2,8 @@ import { createUseStyles } from "react-jss";
 
 export const useManageUsersStyles = createUseStyles({
   container: {
-    margin: "0 32px",
+    margin: "0 4% 2%",
+    fontSize: "12px",
   },
   menuItem: {
     lineHeight: "32px",
@@ -10,10 +11,15 @@ export const useManageUsersStyles = createUseStyles({
     width: "115px",
     backgroundColor: "#EBEBEB",
     textAlign: "center",
-    fontSize: "12px",
+  },
+  loading: {
+    margin: "15px 0",
+  },
+  error: {
+    margin: "15px 0",
+    color: "red",
   },
   grid: {
-    minHeight: "30px",
     margin: "15px 0",
   },
 });
@@ -26,6 +32,7 @@ export const useUserRowstyles = createUseStyles({
     gap: "1rem",
     margin: "5px 0",
     alignItems: "center",
+    fontSize: "12px",
   },
   userImage: {
     overflow: "hidden",

@@ -75,7 +75,6 @@ const ResetPasswordByEmail = ({ byemail }) => {
     setNewCredentials({ ...newCredentials, [e.target.name]: e.target.value });
   };
 
-  console.log("resetPasswordByEmail has been rendered");
   return (
     <>
       <form className={classes.form} onSubmit={handleSubmit}>
@@ -93,7 +92,7 @@ const ResetPasswordByEmail = ({ byemail }) => {
               name="oldPassword"
               onChange={handleChange}
               value={newCredentials.oldPassword}
-              loginStyle
+              loginstyle
             />
           </div>
         )}
@@ -103,7 +102,7 @@ const ResetPasswordByEmail = ({ byemail }) => {
           value={newCredentials.newPassword}
           onChange={handleChange}
           name="newPassword"
-          loginStyle
+          loginstyle
         />
         <div
           className={`${classes.note} ${
@@ -118,7 +117,7 @@ const ResetPasswordByEmail = ({ byemail }) => {
           value={newCredentials.confirmPassword}
           onChange={handleChange}
           name="confirmPassword"
-          loginStyle
+          loginstyle
         />
         <div
           className={`${classes.note} ${

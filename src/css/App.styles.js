@@ -25,7 +25,7 @@ const useStyles = createUseStyles({
   container: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
+    minHeight: "100vh",
     width: "768px",
     margin: "auto",
     backgroundColor: "white",

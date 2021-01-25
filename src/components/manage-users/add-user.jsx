@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FormInput from "../input-forms";
 import CustomButton from "../buttons/custom-button";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ImageUpload from "../image-upload";
-import { addUser } from "../../redux/user/user.actions";
+import { addUserStart, clearErrors } from "../../redux/user/user.actions";
 import useStyles from "../../css/add-user.styles";
 
-const AddUser = (props) => {
+const AddUser = ({ history, path, userToEdit }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
+
+  useEffect(() => dispatch(clearErrors()), [dispatch]);
+
+  const admin = useSelector((state) => state.user.currentUser);
+  const isRequestError = useSelector((state) => state.user.error);
+  const isUserBeingAdded = useSelector((state) => state.user.isFetching);
   const [photo, setPhoto] = useState(null);
   const [userCredentials, setUserCredentials] = useState({
     lastname: "",
@@ -19,17 +24,44 @@ const AddUser = (props) => {
     email: "",
     blocked: false,
     password: "",
-    confirmPassword: "",
   });
+  useEffect(() => {
+    if (userToEdit) {
+      const { lastname, firstname, tel, email, blocked } = userToEdit;
+      setUserCredentials({
+        lastname: `${lastname || ""}`,
+        firstname: `${firstname || ""}`,
+        tel: `${tel || ""}`,
+        email: `${email || ""}`,
+        blocked: `${blocked || ""}`,
+        password: "",
+      });
+    }
+  }, [userToEdit]);
+  // const { user_id } = useParams();
+
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleChange = (e) => {
+    if (e.target.name === "confirmPassword") {
+      return setConfirmPassword(e.target.value);
+    }
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    console.log("submit handled");
-    dispatch(addUser({ ...userCredentials, img: photo }));
-    history.push("/main/users");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (confirmPassword !== userCredentials.password) return;
+    dispatch(
+      addUserStart(
+        admin.token,
+        {
+          ...userCredentials,
+          org_id: admin.organization,
+        },
+        () => history.push("/main/users")
+      )
+    );
   };
 
   const [passwordLengthMsg, setPasswordLengthMsg] = useState({
@@ -62,8 +94,8 @@ const AddUser = (props) => {
   ]);
 
   useEffect(() => {
-    if (!userCredentials.confirmPassword) return;
-    if (userCredentials.confirmPassword !== userCredentials.password) {
+    if (!confirmPassword) return;
+    if (confirmPassword !== userCredentials.password) {
       setPasswordMatchMsg({
         message: "Пароль и подтверждение не совпадают",
         error: true,
@@ -76,16 +108,14 @@ const AddUser = (props) => {
         });
       }
     }
-  }, [
-    userCredentials.confirmPassword,
-    passwordMatchMsg.message,
-    userCredentials.password,
-  ]);
+  }, [confirmPassword, passwordMatchMsg.message, userCredentials.password]);
 
   return (
-    <div className={classes.container}>
+    <form className={classes.container} onSubmit={handleSubmit}>
       <div className={classes.header}>
-        <div className={classes.title}>Добавить пользователя</div>
+        <div className={classes.title}>{`${
+          userToEdit ? "Редактировать" : "Добавить"
+        } пользователя`}</div>
         <div className={classes.block}>
           <input
             name="blocked"
@@ -109,6 +139,7 @@ const AddUser = (props) => {
           value={userCredentials.lastname}
           onChange={handleChange}
           autoComplete="off"
+          required
         />
         <FormInput
           label="Имя"
@@ -116,6 +147,7 @@ const AddUser = (props) => {
           value={userCredentials.firstname}
           onChange={handleChange}
           autoComplete="off"
+          required
         />
         <FormInput
           label="Электронная почта"
@@ -124,6 +156,7 @@ const AddUser = (props) => {
           value={userCredentials.email}
           onChange={handleChange}
           autoComplete="off"
+          required
         />
         <FormInput
           label="Телефон"
@@ -139,14 +172,16 @@ const AddUser = (props) => {
           value={userCredentials.password}
           onChange={handleChange}
           autoComplete="off"
+          required
         />
         <FormInput
           label="Подтверждение пароля"
           type="password"
           name="confirmPassword"
-          value={userCredentials.confirmPassword}
+          value={confirmPassword}
           onChange={handleChange}
           autoComplete="off"
+          required
         />
       </div>
       <div className={classes.grid}>
@@ -160,20 +195,19 @@ const AddUser = (props) => {
         maxHeight={144}
         maxWidth={144}
       />
-
+      <div className={classes.error}>{isRequestError}</div>
       <div className={classes.buttons}>
-        <CustomButton handleClick={handleSubmit}>Сохранить</CustomButton>
-        <Link to={`${props.path ? props.path : "#"}`}>Отмена</Link>
+        <CustomButton disabled={isUserBeingAdded}>
+          {isUserBeingAdded ? "сохраняется..." : "Сохранить"}
+        </CustomButton>
+        <Link to={`${path ? path : "#"}`}>Отмена</Link>
       </div>
-      <div>
-        <Link
-          to={`${props.path ? props.path : "#"}`}
-          className={classes.delete}
-        >
+      {userToEdit && (
+        <Link to={`${path ? path : "#"}`} className={classes.delete}>
           Удалить
         </Link>
-      </div>
-    </div>
+      )}
+    </form>
   );
 };
 

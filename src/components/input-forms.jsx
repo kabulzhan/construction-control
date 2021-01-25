@@ -5,8 +5,13 @@ import {
   useSelectStyles,
 } from "../css/input-forms.styles";
 
-export const FormInput = ({ handleChange, label, ...otherProps }) => {
-  const classes = useFormInputStyles(otherProps);
+export const FormInput = ({
+  handleChange,
+  label,
+  loginstyle,
+  ...otherProps
+}) => {
+  const classes = useFormInputStyles({ loginstyle });
   return (
     <div>
       <label className={classes.label}>{label}</label>

@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 // import { PersistGate } from "redux-persist/integration/react";
 import { store /*, persistor*/ } from "./redux/store";
 import App from "./App";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3210";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import { useHistory } from "react-router-dom";
 import useStyles from "../css/modal.styles";
 
-const Modal = (props) => {
+const Modal = ({ path, child, ...otherProps }) => {
   const classes = useStyles();
   const history = useHistory();
 
   const handleClose = () => {
-    history.push(props.path);
+    history.push(path);
   };
-  const ChildComponent = props.child;
+  const ChildComponent = child;
   return ReactDOM.createPortal(
     <div className={classes.modal}>
       <div className={classes.modalBody} onClick={(e) => e.stopPropagation()}>
@@ -19,7 +19,7 @@ const Modal = (props) => {
             X
           </span>
         </div>
-        <ChildComponent history={history} path={props.path} />
+        <ChildComponent history={history} path={path} {...otherProps} />
       </div>
     </div>,
     document.querySelector("#modal")

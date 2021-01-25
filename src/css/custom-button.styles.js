@@ -12,19 +12,16 @@ export const useButtonStyles = createUseStyles({
       borderRadius: "55px",
     };
     if (props.loginButton) {
-      return {
-        ...genericStyles,
-        width: "100%",
-        backgroundColor: "#1AA839",
-        height: "44px",
-        borderRadius: 0,
-      };
+      genericStyles.width = "100%";
+      genericStyles.backgroundColor = "#1AA839";
+      genericStyles.height = "44px";
+      genericStyles.borderRadius = 0;
     }
     if (props.submit) {
-      return {
-        ...genericStyles,
-        backgroundColor: "#1AA839",
-      };
+      genericStyles.backgroundColor = "#1AA839";
+    }
+    if (props.disabled) {
+      genericStyles.backgroundColor = "grey";
     }
     return genericStyles;
   },

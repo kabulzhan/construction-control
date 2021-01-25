@@ -35,6 +35,7 @@ export const useLoginPageStyles = createUseStyles({
   },
   error: {
     color: "#FF6262",
+    paddingLeft: "5px",
   },
   oldPassword: {
     marginBottom: "45px",
